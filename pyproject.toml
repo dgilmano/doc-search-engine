@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "doc-search-engine"
+version = "0.1.0"
+description = "Full-text search engine for any documentation "
+requires-python = ">=3.11"
+dependencies = [
+    "fastmcp>=2.0",
+    "selectolax>=0.3",
+    "click>=8.1",
+    "pymupdf>=1.24",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0",
+    "ruff>=0.14",
+]
+
+[project.scripts]
+doc-search = "nokia_docs.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+doc_search_engine = ["schema.sql"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+exclude = [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]

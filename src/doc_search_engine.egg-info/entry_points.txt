@@ -1,0 +1,2 @@
+[console_scripts]
+doc-search = nokia_docs.cli:main
